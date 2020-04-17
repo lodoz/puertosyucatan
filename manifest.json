@@ -1,6 +1,7 @@
 {
-  "name": "puertosyucatan",
-  "short_name": "puertosyucatan",
+  "name": "Puertos Yucatan",
+  "short_name": "Puertos Yucatan",
+  "description": "Consulta la programación de buques de los Puertos de Yucatán.",
   "theme_color": "#0d7e1c",
   "background_color": "#0d7e1c",
   "display": "standalone",
