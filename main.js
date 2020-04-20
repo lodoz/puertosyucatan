@@ -116,3 +116,10 @@ $('#update a').click(update);
 
 // Update trending giphys on load
 update();
+
+
+$(document).ready(function(){
+    $('.nav-button').click(function(){
+      $('body').toggleClass('nav-open');
+    });
+  });
