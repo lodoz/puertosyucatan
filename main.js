@@ -76,7 +76,7 @@ function update() {
                   '<div class="row">'+
                       '<div class="col">'+
                           '<h2 class="h6 text-uppercase TITULO">En puerto</h2>'+
-                          '<ul class="list-inline">'+
+                          '<ul class="list-inline mb-4">'+
                               '<li class="list-inline-item"><a href="#" onclick="Mostrar(\'ENPUERTO\')" class="active" id=\'ENPUERTO\'>Embarcaciones</a></li>'+
                               '<li class="list-inline-item"><a href="#" onclick="Mostrar(\'REMOLCADOR\')" id=\'REMOLCADOR\'>Remolcadores</a></li>'+
                               '<li class="list-inline-item"><a href="#" onclick="Mostrar(\'PROLONGADA\')" id=\'PROLONGADA\'>Estadía</a></li>'+
@@ -84,7 +84,7 @@ function update() {
                           '</ul>'+
                       '</div>'+
                   '</div>'+
-                  '<div class="row">'
+                  '<div class="row cuadros">'
             );
 
             // Ciclo sobre los buques
@@ -94,11 +94,11 @@ function update() {
                 ultimosBuques.push( buque );
 
                 // Add Giphy HTML
-                $('#buques').append(
+                $('#buques .cuadros').append(
                     '<div class="col-12 col-md-6 col-lg-4 col-xl-3 '+ buque.Estado + '">' +
                     '<div class="card border-0 mb-4 shadow">'+
                         '<div class="card-body">'+
-                            '<img src="https://www.countryflags.io/'+ buque.Bandera +'/flat/24.png" alt="Flag" class="mr-2">'+ buque.Buque +'<br>'+
+                            '<p><img src="https://www.countryflags.io/'+ buque.Bandera +'/flat/24.png" alt="Flag" class="mr-2">'+ buque.Buque +'</p>'+
                             '<b>Carga:</b> '+ buque.Carga + '<br>' +
                             '<b>Posición:</b> '+ buque.Posicion + '<br>'+
                             '<b>Puerto:</b> ' + buque.Puerto + '<br>'+
