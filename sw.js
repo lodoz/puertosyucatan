@@ -1,5 +1,5 @@
 // SW Version
-const version = '0.1';
+const version = '0.10';
 
 // Static Cache - App Shell
 const appAssets = [
@@ -9,7 +9,10 @@ const appAssets = [
     'images/logo.png',
     'images/sync.png',
     'vendor/bootstrap.min.css',
-    'vendor/jquery.min.js'
+    'vendor/jquery.min.js',
+    'vendor/animate.min.css',
+    'vendor/bootstrap.min.js',
+    'vendor/popper.min.js'
 ];
 
 
@@ -92,7 +95,7 @@ const cleanBuquesCache = (buques) => {
             keys.forEach( key => {
 
                 // If entry is NOT part of current Giphys, Delete
-                if( !buques.includes(key.url) ) cache.delete(key);
+                //if( !buques.includes(key.url) ) cache.delete(key);
             });
         });
     });

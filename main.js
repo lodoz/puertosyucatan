@@ -48,11 +48,8 @@ if (navigator.serviceWorker) {
 
 // API de API para traer el json con la informacion de los buques
 var buques = {
-    url: 'https://www.sparp.com.mx/Accesoft/api/PersonaConsulta/',
-    query: {
-        minutes: '3',
-        ip: '1'
-    }
+    url: 'https://www.sparp.com.mx/Accesoft/api/ProgramacionBuques',
+    query: ''
 };
 
 // Actualizar la progamación de buques
@@ -68,26 +65,63 @@ function update() {
         .done( function (res) {
 
             // Empty Element
-            $('#arribos').empty();
+            $('#buques').empty();
 
             // Populate array of latest Buques
             var ultimosBuques = [];
 
+            //Poner la cabecera
+            $('#buques').append(
+              '<div class="container">'+
+                  '<div class="row">'+
+                      '<div class="col">'+
+                          '<h2 class="h6 text-uppercase TITULO">En puerto</h2>'+
+                          '<ul class="list-inline">'+
+                              '<li class="list-inline-item"><a href="#" onclick="Mostrar(\'ENPUERTO\')" class="active" id=\'ENPUERTO\'>Embarcaciones</a></li>'+
+                              '<li class="list-inline-item"><a href="#" onclick="Mostrar(\'REMOLCADOR\')" id=\'REMOLCADOR\'>Remolcadores</a></li>'+
+                              '<li class="list-inline-item"><a href="#" onclick="Mostrar(\'PROLONGADA\')" id=\'PROLONGADA\'>Estadía</a></li>'+
+                              '<li class="list-inline-item"><a href="#" onclick="Mostrar(\'PROGRAMADO\')" id=\'PROGRAMADO\'>Programados</a></li>'+
+                          '</ul>'+
+                      '</div>'+
+                  '</div>'+
+                  '<div class="row">'
+            );
+
             // Ciclo sobre los buques
-            $.each( res.Elementos, function (i, buque) {
+            $.each( res, function (i, buque) {
 
                 // Add to latest Buque
-                ultimosBuques.push( buque.Nombre );
+                ultimosBuques.push( buque );
 
                 // Add Giphy HTML
-                $('#arribos').prepend(
-                    '<div class="col-sm-6 col-md-4 col-lg-3 p-1">' +
-                    //'<h2>Nombre: <b>' + buque.Nombre + '</b></h2>' +
-                    //'<p>Empresa: <b>' + buque.Empresa + '</b></p>' +
-                    '<img class="w-100 img-fluid" src="https://www.sparp.com.mx/Accesoft/Imagen/ObtenerImagen/' + buque.URL_Foto + '">' +
+                $('#buques').append(
+                    '<div class="col-12 col-md-6 col-lg-4 col-xl-3 '+ buque.Estado + '">' +
+                    '<div class="card border-0 mb-4 shadow">'+
+                        '<div class="card-body">'+
+                            '<img src="https://www.countryflags.io/'+ buque.Bandera +'/flat/24.png" alt="Flag" class="mr-2">'+ buque.Buque +'<br>'+
+                            '<b>Carga:</b> '+ buque.Carga + '<br>' +
+                            '<b>Posición:</b> '+ buque.Posicion + '<br>'+
+                            '<b>Puerto:</b> ' + buque.Puerto + '<br>'+
+                            '<b>Arribo:</b> ' + buque.Arribo + '<br>'+
+                            '<b>Atraque:</b> ' + buque.Atraque + '<br>'+
+                            '<b>ETD:</b> ' + buque.ETD +
+                        '</div>' +
+                    '</div>' +
                     '</div>'
                 );
             });
+
+            //Cerrar estructura html
+            $('#buques').append('</div></div>');
+
+            //Actualizar fecha
+            var today = new Date();
+            var meses = new Array ("enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre");
+            var dd = today.getDate();
+            var mm = today.getMonth()+1;
+            var yyyy = today.getFullYear();
+            var factualizada = dd + ' de ' + meses[Number(mm)-1] + yyyy;
+            $('#fechaActualizacion').text(factualizada);
 
             // Inform the SW (if available) of current Buques
             if( navigator.serviceWorker ) buquesCacheClean(ultimosBuques);
@@ -114,12 +148,55 @@ function update() {
 // Manual refresh
 $('#update a').click(update);
 
-// Update trending giphys on load
+// Update buques on load
 update();
-
 
 $(document).ready(function(){
     $('.nav-button').click(function(){
       $('body').toggleClass('nav-open');
     });
+    Mostrar('PRINCIPAL');
   });
+
+  function Mostrar(estado){
+    if(estado.toUpperCase() == 'PRINCIPAL')
+    {
+      $('#buques').hide();
+      $("#portada").show();
+      return;
+    }
+
+    $('#buques').show();
+    $("#portada").hide();
+
+    //submenus
+    $(".ENPUERTO").hide();
+    $(".REMOLCADOR").hide();
+    $(".PROLONGADA").hide();
+    $(".PROGRAMADO").hide();
+    $("#ENPUERTO").removeClass("active");
+    $("#REMOLCADOR").removeClass("active");
+    $("#PROLONGADA").removeClass("active");
+    $("#PROGRAMADO").removeClass("active");
+
+    if(estado.toUpperCase() == 'ENPUERTO')
+    {
+      $(".ENPUERTO").show();
+      $("#ENPUERTO").addClass("active");
+    }
+    if(estado.toUpperCase() == 'REMOLCADOR')
+    {
+      $(".REMOLCADOR").show();
+      $("#REMOLCADOR").addClass("active");
+    }
+    if(estado.toUpperCase() == 'PROLONGADA')
+    {
+      $(".PROLONGADA").show();
+      $("#PROLONGADA").addClass("active");
+    }
+    if(estado.toUpperCase() == 'PROGRAMADO')
+    {
+      $(".PROGRAMADO").show();
+      $("#PROGRAMADO").addClass("active");
+    }
+  }

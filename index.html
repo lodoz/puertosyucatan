@@ -36,10 +36,9 @@
         <meta name="msapplication-wide310x150logo" content="images/icons/mstile-310x150.png">
         <meta name="msapplication-square310x310logo" content="images/icons/mstile-310x310.png">
 
-        <!-- <link rel="stylesheet" href="vendor/bootstrap.min.css"> -->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="stylesheet" href="vendor/bootstrap.min.css">
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+        <link rel="stylesheet" href="vendor/animate.min.css">
 
         <link rel="stylesheet" href="assets/lib/fontawesome/css/all.min.css">
         <link rel="stylesheet" href="assets/css/home.min.css">
@@ -64,14 +63,14 @@
                 <a class="nav-button ml-auto"><span id="nav-icon3"><span></span><span></span><span></span><span></span></span></a>
                 </div>
             </div> <!--navbar end-->
-            
+
             <div class="fixed-top main-menu">
                 <div class="d-flex align-items-center p-5 h-100">
                     <div>
                         <p class="h2 font-weight-normal mb-5">Puertos Yucatán</p>
                         <ul class="nav flex-column">
-                            <li class="nav-item delay-1"><a class="nav-link" href="#">En puerto</a></li>
-                            <li class="nav-item delay-2"><a class="nav-link" href="#">Arribos programados</a></li>
+                            <li class="nav-item delay-1"><a class="nav-link" href="#" onclick="Mostrar('ENPUERTO');">En puerto</a></li>
+                            <li class="nav-item delay-2"><a class="nav-link" href="#" onclick="Mostrar('PROGRAMADO');">Arribos programados</a></li>
                         </ul>
                     </div>
                 </div>
@@ -80,8 +79,8 @@
 
         <main class="container py-5">
 
-          <div class="alert alert-info text-center m-1">
-            <button class="add-button">Add to home screen</button>
+          <div class="alert alert-info text-center m-1 add-button">
+            <a >Esta página funciona mejor si la añades como app <b class="btn btn-secondary">añadir</b></a>
           </div>
 
             <!-- Error Alert -->
@@ -89,8 +88,41 @@
                 No se pueden actualizar PuertosYucatan
             </div>
 
-            <!-- Arribos en puerto -->
-            <div id="arribos" class="row no-gutters"></div>
+            <!-- Menú portada -->
+            <div id="portada" class="">
+                  <div class="container">
+                      <div class="row">
+                          <div class="col">
+                              <h1 class="font-weight-normal mb-4">Programación<span class="d-block d-sm-none"></span> de buques</h1>
+                          </div>
+                      </div>
+                      <div class="row">
+                          <div class="col-12 col-md-6">
+                              <a href="#" class="card bg-gold border-0 mb-4 shadow" onclick="Mostrar('ENPUERTO');">
+                                  <div class="card-body d-flex align-items-end">
+                                      <div>
+                                          <i class="fas fa-arrow-right"></i><br>
+                                          En puerto
+                                      </div>
+                                  </div>
+                              </a>
+                          </div>
+                          <div class="col-12 col-md-6">
+                              <a href="#" class="card bg-dark-red border-0 mb-4 shadow" onclick="Mostrar('PROGRAMADO');">
+                                  <div class="card-body d-flex align-items-end">
+                                      <div>
+                                          <i class="fas fa-arrow-right"></i><br>
+                                          Arribos programados
+                                      </div>
+                                  </div>
+                              </a>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+            <!-- Buques en puerto -->
+            <div id="buques" class="row no-gutters"></div>
 
             <noscript>
                 <div class="text-center mt-5">
@@ -99,107 +131,19 @@
                 </div>
             </noscript>
 
-            <div id="page1" class="">
-                <div class="container">
-                    <div class="row">
-                        <div class="col">
-                            <h1 class="font-weight-normal mb-4">Programación<span class="d-block d-sm-none"></span> de buques</h1>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-12 col-md-6">
-                            <a href="" class="card bg-gold border-0 mb-4 shadow">
-                                <div class="card-body d-flex align-items-end">
-                                    <div>
-                                        <i class="fas fa-arrow-right"></i><br>
-                                        En puerto
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-12 col-md-6">
-                            <a href="" class="card bg-dark-red border-0 mb-4 shadow">
-                                <div class="card-body d-flex align-items-end">
-                                    <div>
-                                        <i class="fas fa-arrow-right"></i><br>
-                                        Arribos programados
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div id="detail" class="">
-                <div class="container">
-                    <div class="row">
-                        <div class="col">
-                            <h2 class="h6 text-uppercase">En puerto</h2>
-                            <ul class="list-inline">
-                                <li class="list-inline-item"><a href="" class="active">Embarcaciones</a></li>
-                                <li class="list-inline-item"><a href="">Remolcadores</a></li>
-                                <li class="list-inline-item"><a href="">Estadía</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-                            <div class="card border-0 mb-4 shadow">
-                                <div class="card-body">
-                                    <img src="" alt="Flag" class="mr-2">Texas Harmony<br>
-                                    <b>Carga:</b> 35300 Granel Agricola<br>
-                                    <b>Posición:</b> MUELLE 8<br>
-                                    <b>Puerto:</b> PROGRESO<br>
-                                    <b>Arribo:</b> 14/04/20 11:03<br>
-                                    <b>Atraque:</b> 15/04/20 07:16<br>
-                                    <b>ETD:</b> 17/04/20 06:00
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-                            <div class="card border-0 mb-4 shadow">
-                                <div class="card-body">
-                                    <img src="" alt="Flag" class="mr-2">Texas Harmony<br>
-                                    <b>Carga:</b> 35300 Granel Agricola<br>
-                                    <b>Posición:</b> MUELLE 8<br>
-                                    <b>Puerto:</b> PROGRESO<br>
-                                    <b>Arribo:</b> 14/04/20 11:03<br>
-                                    <b>Atraque:</b> 15/04/20 07:16<br>
-                                    <b>ETD:</b> 17/04/20 06:00
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-                            <div class="card border-0 mb-4 shadow">
-                                <div class="card-body">
-                                    <img src="" alt="Flag" class="mr-2">Texas Harmony<br>
-                                    <b>Carga:</b> 35300 Granel Agricola<br>
-                                    <b>Posición:</b> MUELLE 8<br>
-                                    <b>Puerto:</b> PROGRESO<br>
-                                    <b>Arribo:</b> 14/04/20 11:03<br>
-                                    <b>Atraque:</b> 15/04/20 07:16<br>
-                                    <b>ETD:</b> 17/04/20 06:00
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
             <div class="footer fixed-bottom py-2 bg-white">
                 <div class="container">
                     <div class="row">
                         <div class="col">
                             <small>
                             <b>Fuente:</b> Sistema Informático SPARP<br>
-                            <b>Última actualización:</b> 14 de Junio de 2017
+                            <b>Última actualización:</b> <a id="fechaActualizacion">14 de Junio de 2017</a>
                             </small>
                         </div>
                         <div id="update" class="col-auto text-right">
                             <a class="icon" href="#update"><i class="fas fa-check text-success"></i></a>
                             <!-- <img class="icon d-none spinner" width="20" src="images/sync.png"> -->
-                            <i class="d-none fas fa-sync-alt fa-spin"></i>
+                            <i class="d-none fas fa-sync-alt fa-spin text-success"></i>
                         </div>
                     </div>
                 </div>
@@ -213,10 +157,9 @@
             </div>
         </div>
 
-        <!-- <script defer src="vendor/jquery.min.js"></script> -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+        <script defer src="vendor/jquery.min.js"></script>
+        <script defer src="vendor/popper.min.js"></script>
+        <script defer src="vendor/bootstrap.min.js"></script>
         <script defer src="main.js"></script>
 
     </body>
