@@ -155,6 +155,9 @@ $(document).ready(function(){
     $('.nav-button').click(function(){
       $('body').toggleClass('nav-open');
     });
+    $('.main-menu .nav-item').on('click', function(){
+      $('body').toggleClass('nav-open');
+    });
     Mostrar('PRINCIPAL');
   });
 

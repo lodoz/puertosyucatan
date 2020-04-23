@@ -7,10 +7,6 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=0, user-scalable=0">
 
-        <link rel="manifest" href="manifest.json">
-
-        <meta name="theme-color" content="#0d7e1c">
-
         <meta name="apple-mobile-web-app-title" content="PuertosYucatan">
         <meta name="apple-mobile-web-app-capable" content="yes">
         <link rel="apple-touch-startup-image" href="images/splash/launch-640x1136.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
@@ -20,27 +16,6 @@
         <link rel="apple-touch-startup-image" href="images/splash/launch-1536x2048.png" media="(min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait)">
         <link rel="apple-touch-startup-image" href="images/splash/launch-1668x2224.png" media="(min-device-width: 834px) and (max-device-width: 834px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait)">
         <link rel="apple-touch-startup-image" href="images/splash/launch-2048x2732.png" media="(min-device-width: 1024px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait)">
-
-        <!-- <link rel="apple-touch-icon-precomposed" sizes="57x57" href="images/icons/apple-touch-icon-57x57.png">
-        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/icons/apple-touch-icon-114x114.png">
-        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/icons/apple-touch-icon-72x72.png">
-        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/icons/apple-touch-icon-144x144.png">
-        <link rel="apple-touch-icon-precomposed" sizes="60x60" href="images/icons/apple-touch-icon-60x60.png">
-        <link rel="apple-touch-icon-precomposed" sizes="120x120" href="images/icons/apple-touch-icon-120x120.png">
-        <link rel="apple-touch-icon-precomposed" sizes="76x76" href="images/icons/apple-touch-icon-76x76.png">
-        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="images/icons/apple-touch-icon-152x152.png">
-        <link rel="icon" type="image/png" href="images/icons/favicon-196x196.png" sizes="196x196">
-        <link rel="icon" type="image/png" href="images/icons/favicon-96x96.png" sizes="96x96">
-        <link rel="icon" type="image/png" href="images/icons/favicon-32x32.png" sizes="32x32">
-        <link rel="icon" type="image/png" href="images/icons/favicon-16x16.png" sizes="16x16">
-        <link rel="icon" type="image/png" href="images/icons/favicon-128.png" sizes="128x128">
-
-        <meta name="msapplication-TileColor" content="#0d7e1c">
-        <meta name="msapplication-TileImage" content="images/icons/mstile-144x144.png">
-        <meta name="msapplication-square70x70logo" content="images/icons/mstile-70x70.png">
-        <meta name="msapplication-square150x150logo" content="images/icons/mstile-150x150.png">
-        <meta name="msapplication-wide310x150logo" content="images/icons/mstile-310x150.png">
-        <meta name="msapplication-square310x310logo" content="images/icons/mstile-310x310.png"> -->
 
         <link rel="apple-touch-icon" sizes="57x57" href="images/icons/apple-icon-57x57.png">
         <link rel="apple-touch-icon" sizes="60x60" href="images/icons/apple-icon-60x60.png">
@@ -56,6 +31,7 @@
         <link rel="icon" type="image/png" sizes="96x96" href="images/icons/favicon-96x96.png">
         <link rel="icon" type="image/png" sizes="16x16" href="images/icons/favicon-16x16.png">
         
+        <link rel="manifest" href="manifest.json">
         <meta name="msapplication-config" content="images/icons/browserconfig.xml" />
         <meta name="msapplication-TileColor" content="#621132">
         <meta name="msapplication-TileImage" content="images/icons/ms-icon-144x144.png">
@@ -94,8 +70,8 @@
                     <div>
                         <p class="h2 font-weight-normal mb-5 text-white">Puertos Yucatán</p>
                         <ul class="nav flex-column">
-                            <li class="nav-item delay-1"><a class="nav-link" href="#" onclick="Mostrar('ENPUERTO');">En puerto <i class="fas fa-arrow-right ml-4"></i></a></li>
-                            <li class="nav-item delay-2"><a class="nav-link" href="#" onclick="Mostrar('PROGRAMADO');">Arribos programados <i class="fas fa-arrow-right ml-4"></i></a></li>
+                            <li class="nav-item delay-1"><a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show" href="#" onclick="Mostrar('ENPUERTO');">En puerto <i class="fas fa-arrow-right ml-4"></i></a></li>
+                            <li class="nav-item delay-2"><a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show" href="#" onclick="Mostrar('PROGRAMADO');">Arribos programados <i class="fas fa-arrow-right ml-4"></i></a></li>
                         </ul>
                     </div>
                 </div>
@@ -123,21 +99,19 @@
                       </div>
                       <div class="row">
                           <div class="col-12 col-md-6">
-                              <a href="#" class="card bg-gold border-0 mb-4 shadow animated fadeIn" onclick="Mostrar('ENPUERTO');">
+                              <a href="#" class="card bg-gold border-0 mb-4 shadow animated fadeIn card-puerto" onclick="Mostrar('ENPUERTO');">
                                   <div class="card-body d-flex align-items-end">
                                       <div>
-                                          <i class="fas fa-arrow-right"></i><br>
-                                          En puerto
+                                          En puerto <i class="fas fa-arrow-right ml-3"></i>
                                       </div>
                                   </div>
                               </a>
                           </div>
                           <div class="col-12 col-md-6">
-                              <a href="#" class="card bg-dark-red border-0 mb-4 shadow animated fadeIn delay-800" onclick="Mostrar('PROGRAMADO');">
+                              <a href="#" class="card bg-dark-red border-0 mb-4 shadow animated fadeIn delay-800 card-programado" onclick="Mostrar('PROGRAMADO');">
                                   <div class="card-body d-flex align-items-end">
                                       <div>
-                                          <i class="fas fa-arrow-right"></i><br>
-                                          Arribos programados
+                                          Arribos programados <i class="fas fa-arrow-right ml-3"></i>
                                       </div>
                                   </div>
                               </a>
@@ -156,7 +130,7 @@
                 </div>
             </noscript>
 
-            <div class="footer fixed-bottom py-2 bg-white">
+            <div class="footer pt-3 bg-white">
                 <div class="container">
                     <div class="row">
                         <div class="col">

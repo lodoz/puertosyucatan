@@ -1,8 +1,31 @@
 body {
     font-family: 'Montserrat', sans-serif;
 }
+a {
+    transition: all .4s;
+}
 .card {
     border-radius: 15px;
+    transition: all .4s;
+}
+/* .card:hover{
+    transform: translate3d(0, -5px, 0)
+} */
+.card .fa-arrow-right {
+    transition: all .4s;
+} 
+.card:hover .fa-arrow-right {
+    margin-left: 30px !important;
+}
+.card-puerto, .card-programado {
+    background-position: center;
+    background-size: cover;
+}
+.card-puerto {
+    background-image: url(/images/bg-puerto.png);
+}
+.card-programado {
+    background-image: url(/images/bg-programado.png);
 }
 .spinner {
     animation-name: spin;
@@ -18,11 +41,20 @@ body {
   top: 1px;
   left: 1px;
 }
-#buques ul{
+#buques ul {
     list-style-type:none;
     white-space:nowrap;
     overflow-x:auto;
 }
+/* Hide scrollbar for Chrome, Safari and Opera */
+#buques ul::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Hide scrollbar for IE and Edge */
+#buques ul {
+    -ms-overflow-style: none;
+  }
 #buques ul li a {
     font-size: 2rem;
     color: #333;
@@ -44,6 +76,9 @@ body {
     position: absolute;
     bottom: -5px;
     left: 0;
+}
+#buques ul li #PROGRAMADO.active:after {
+    background-color: #9D2449;
 }
 .bg-gold {
     background-color: #D4C19C;
