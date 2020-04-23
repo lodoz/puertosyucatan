@@ -98,7 +98,7 @@ function update() {
                     '<div class="col-12 col-md-6 col-lg-4 col-xl-3 '+ buque.Estado + '">' +
                     '<div class="card border-0 mb-4 shadow">'+
                         '<div class="card-body">'+
-                            '<p><img src="https://www.countryflags.io/'+ buque.Bandera +'/flat/24.png" alt="Flag" class="mr-2">'+ buque.Buque +'</p>'+
+                            '<p><img src="https://www.countryflags.io/'+ buque.Bandera +'/flat/24.png" alt="País" title="País" loading="lazy" class="mr-2">'+ buque.Buque +'</p>'+
                             '<b>Carga:</b> '+ buque.Carga + '<br>' +
                             '<b>Posición:</b> '+ buque.Posicion + '<br>'+
                             '<b>Puerto:</b> ' + buque.Puerto + '<br>'+
