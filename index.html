@@ -78,16 +78,19 @@
             </div> <!--main-menu end-->
         </header>
 
-        <main class="container py-5">
-
-          <div class="alert alert-info text-center m-1 add-button">
-            <a >Esta página funciona mejor si la añades como app <b class="btn btn-secondary">añadir</b></a>
+        <div class="alert alert-info text-center add-button border-0 py-3 rounded-0">
+            <a><span class="d-block pb-2">Esta página funciona mejor si la añades como app.</span><b class="btn btn-secondary">Añadir</b></a>
           </div>
 
-            <!-- Error Alert -->
-            <div class="alert alert-danger text-center m-1" style="display:none;">
-                No se pueden actualizar PuertosYucatan
-            </div>
+        <!-- Error Alert -->
+        <div class="alert alert-danger text-center border-0 py-3 rounded-0" style="display:none;">
+            No se pueden actualizar PuertosYucatan.
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+        </div>
+
+        <main class="container py-5">
 
             <!-- Menú portada -->
             <div id="portada" class="">

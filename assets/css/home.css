@@ -22,10 +22,10 @@ a {
     background-size: cover;
 }
 .card-puerto {
-    background-image: url(/images/bg-puerto.png);
+    background-image: url(../../images/bg-puerto.png);
 }
 .card-programado {
-    background-image: url(/images/bg-programado.png);
+    background-image: url(../../images/bg-programado.png);
 }
 .spinner {
     animation-name: spin;
@@ -37,10 +37,10 @@ a {
     from { transform:rotate(0deg); }
     to {transform:rotate(360deg); }
 }
-.add-button {
+/* .add-button {
   top: 1px;
   left: 1px;
-}
+} */
 #buques ul {
     list-style-type:none;
     white-space:nowrap;
