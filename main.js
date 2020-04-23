@@ -77,10 +77,10 @@ function update() {
                       '<div class="col">'+
                           '<h2 class="h6 text-uppercase TITULO">En puerto</h2>'+
                           '<ul class="list-inline mb-4">'+
-                              '<li class="list-inline-item"><a href="#" onclick="Mostrar(\'ENPUERTO\')" class="active" id=\'ENPUERTO\'>Embarcaciones</a></li>'+
-                              '<li class="list-inline-item"><a href="#" onclick="Mostrar(\'REMOLCADOR\')" id=\'REMOLCADOR\'>Remolcadores</a></li>'+
-                              '<li class="list-inline-item"><a href="#" onclick="Mostrar(\'PROLONGADA\')" id=\'PROLONGADA\'>Estadía</a></li>'+
-                              '<li class="list-inline-item"><a href="#" onclick="Mostrar(\'PROGRAMADO\')" id=\'PROGRAMADO\'>Programados</a></li>'+
+                              '<li class="list-inline-item ARRIBADO"><a href="#" onclick="Mostrar(\'ENPUERTO\')" class="active" id=\'ENPUERTO\'>Embarcaciones</a></li>'+
+                              '<li class="list-inline-item ARRIBADO"><a href="#" onclick="Mostrar(\'REMOLCADOR\')" id=\'REMOLCADOR\'>Remolcadores</a></li>'+
+                              '<li class="list-inline-item ARRIBADO"><a href="#" onclick="Mostrar(\'PROLONGADA\')" id=\'PROLONGADA\'>Estadía</a></li>'+
+                              '<li class="list-inline-item PROGRAMADO"><a href="#" onclick="Mostrar(\'PROGRAMADO\')" id=\'PROGRAMADO\'>Programados</a></li>'+
                           '</ul>'+
                       '</div>'+
                   '</div>'+
@@ -93,12 +93,35 @@ function update() {
                 // Add to latest Buque
                 ultimosBuques.push( buque );
 
-                // Add Giphy HTML
-                $('#buques .cuadros').append(
+                // Add Buque HTML
+                if(buque.Estado == 'PROGRAMADO')
+                {
+                  $('#buques .cuadros').append(
                     '<div class="col-12 col-md-6 col-lg-4 col-xl-3 '+ buque.Estado + '">' +
                     '<div class="card border-0 mb-4 shadow">'+
                         '<div class="card-body">'+
-                            '<p><img src="https://www.countryflags.io/'+ buque.Bandera +'/flat/24.png" alt="País" title="País" loading="lazy" class="mr-2">'+ buque.Buque +'</p>'+
+                            '<p><img src="https://www.countryflags.io/'+ buque.Bandera.substring(0, 2) +'/flat/24.png" alt="'+ buque.Bandera +'" title="'+ buque.Bandera +'" loading="lazy" class="mr-2">'+ buque.Buque +'</p>'+
+                            '<b>Agencia naviera:</b> '+ buque.Agencia + '<br>' +
+                            '<b>Carga:</b> '+ buque.Producto + '<br>'+
+                            '<b>ESL:</b> ' + buque.Eslora + '<br>'+
+                            '<b>CAL:</b> ' + buque.Calado + '<br>'+
+                            '<b>TON:</b> ' + buque.Tonelaje + '<br>'+
+                            '<b>Posición autorizada:</b> ' + buque.PosicionAutorizada +'<br>'+
+                            '<b>Procedencia:</b> ' + buque.Procedencia +'<br>'+
+                            '<b>ETA:</b> ' + buque.ETA + '<br>'+
+                            '<b>ETD:</b> ' + buque.ETD +
+                        '</div>' +
+                    '</div>' +
+                    '</div>'
+                );
+                }
+                else
+                {
+                  $('#buques .cuadros').append(
+                    '<div class="col-12 col-md-6 col-lg-4 col-xl-3 '+ buque.Estado + '">' +
+                    '<div class="card border-0 mb-4 shadow">'+
+                        '<div class="card-body">'+
+                            '<p><img src="https://www.countryflags.io/'+ buque.Bandera.substring(0, 2) +'/flat/24.png" alt="'+ buque.Bandera +'" title="'+ buque.Bandera +'" loading="lazy" class="mr-2">'+ buque.Buque +'</p>'+
                             '<b>Carga:</b> '+ buque.Carga + '<br>' +
                             '<b>Posición:</b> '+ buque.Posicion + '<br>'+
                             '<b>Puerto:</b> ' + buque.Puerto + '<br>'+
@@ -109,6 +132,7 @@ function update() {
                     '</div>' +
                     '</div>'
                 );
+              }
             });
 
             //Cerrar estructura html
@@ -177,28 +201,34 @@ $(document).ready(function(){
     $(".REMOLCADOR").hide();
     $(".PROLONGADA").hide();
     $(".PROGRAMADO").hide();
+    $(".ARRIBADO").hide();
     $("#ENPUERTO").removeClass("active");
     $("#REMOLCADOR").removeClass("active");
     $("#PROLONGADA").removeClass("active");
     $("#PROGRAMADO").removeClass("active");
+    $(".TITULO").text('En puerto');
 
     if(estado.toUpperCase() == 'ENPUERTO')
     {
+      $(".ARRIBADO").show();
       $(".ENPUERTO").show();
       $("#ENPUERTO").addClass("active");
     }
     if(estado.toUpperCase() == 'REMOLCADOR')
     {
+      $(".ARRIBADO").show();
       $(".REMOLCADOR").show();
       $("#REMOLCADOR").addClass("active");
     }
     if(estado.toUpperCase() == 'PROLONGADA')
     {
+      $(".ARRIBADO").show();
       $(".PROLONGADA").show();
       $("#PROLONGADA").addClass("active");
     }
     if(estado.toUpperCase() == 'PROGRAMADO')
     {
+      $(".TITULO").text('Arribos');
       $(".PROGRAMADO").show();
       $("#PROGRAMADO").addClass("active");
     }

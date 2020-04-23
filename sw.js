@@ -1,17 +1,20 @@
 // SW Version
-const version = '0.13';
+const version = '0.16';
 
 // Static Cache - App Shell
 const appAssets = [
     'index.html',
     'main.js',
+    'assets/css/home.min.css',
     'images/flame.png',
     'images/logo.png',
     'images/sync.png',
     'vendor/bootstrap.min.css',
+    'vendor/bootstrap.min.css.map',
     'vendor/jquery.min.js',
     'vendor/animate.min.css',
     'vendor/bootstrap.min.js',
+    'vendor/bootstrap.min.js.map',
     'vendor/popper.min.js'
 ];
 
@@ -19,10 +22,12 @@ const appAssets = [
 // SW Install
 self.addEventListener( 'install', e => {
 
-    e.waitUntil(
+    //e.waitUntil(
         caches.open( `static-${version}` )
             .then( cache => cache.addAll(appAssets) )
-    );
+    //);
+
+    self.skipWaiting();
 });
 
 // SW Activate
@@ -86,7 +91,7 @@ const fallbackCache = (req) => {
 // Clean old Buques from the 'buques' cache
 const cleanBuquesCache = (buques) => {
 
-    caches.open('buques').then( cache => {
+    caches.open('banderas').then( cache => {
 
         // Get all cache entries
         cache.keys().then( keys => {
@@ -113,8 +118,8 @@ self.addEventListener('fetch', e => {
         e.respondWith( fallbackCache(e.request) );
 
     // Giphy Media
-    } else if ( e.request.url.match('www.sparp.com.mx/Accesoft/Imagen/ObtenerImagen') ) {
-        e.respondWith( staticCache(e.request, 'buques') );
+    } else if ( e.request.url.match('https://www.countryflags.io/') ) {
+        e.respondWith( staticCache(e.request, 'banderas') );
     }
 });
 
